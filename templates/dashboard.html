@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Dashboard</title>
+</head>
+<body>
+<h2>Dashboard</h2>
+<a href="/logout">Logout</a>
+
+<h3>Add Task</h3>
+<form method="POST" action="/add">
+Title:
+<input type="text" name="title">
+
+Description:
+<input type="text" name="description">
+<button type="submit">Add</button>
+</form>
+
+<h3>Search</h3>
+<form method="GET">
+<input type="text" name="search">
+<button type="submit">Search</button>
+</form>
+
+<h3>Task List</h3>
+{% for task in tasks %}
+<p>
+{{task[1]}} - {{task[2]}} - {{task[3]}}
+<a href="/update/{{task[0]}}">Mark Done</a>
+<form method="POST" action="/delete/{{task[0]}}" style="display:inline;">
+<button type="submit">Delete</button>
+</form>
+</p>
+{% endfor %}
+</body>
+</html>
